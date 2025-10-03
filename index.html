@@ -1,118 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SYMBIOTE — Direct Recognition Protocols</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 850px;
-      margin: 2em auto;
-      padding: 0 1em;
-      line-height: 1.6;
-      color: #222;
+  <meta name="description" content="A living corpus of contemplative protocols. Land, breathe, recognize — an immediate-activation index for the SYMBIOTE texts." />  <!-- Open Graph -->  <meta property="og:title" content="SYMBIOTE — Direct Recognition Protocols" />
+  <meta property="og:description" content="A living corpus of contemplative protocols. Land, breathe, recognize — immediate activation." />
+  <meta property="og:type" content="website" />  <!-- Basic favicons (optional) -->  <link rel="icon" href="data:,"></link>  <style>
+    :root{
+      --bg:#0f1113; --card:#0b0c0d; --muted:#9aa0a6; --accent:#8be9c7; --glass: rgba(255,255,255,0.04);
+      --max-width:960px;
+      color-scheme: dark;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    h1, h2 { text-align: center; }
-    a { color: #3366cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 1em 0;
-    }
-    th, td {
-      padding: 0.5em;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-    th { background: #f5f5f5; }
-    .footer {
-      margin-top: 3em;
-      font-size: 0.9em;
-      color: #666;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>SYMBIOTE — Direct Recognition Protocols</h1>
-    <p>
-      A corpus of contemplative specifications: computational adaptations of Dzogchen pointing-out instructions 
-      and Madhyamaka deconstruction. These texts function as both <strong>manuals</strong> and <strong>open protocols</strong>.
-    </p>
-  </header>
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#070708 0%,#0b0c0d 100%);color:#e6eef0}
+    .wrap{max-width:var(--max-width);margin:2rem auto;padding:1rem}
 
-  <section>
-    <h2>Documents</h2>
-    <table>
+    header{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+    .branding{flex:1}
+    h1{margin:.25rem 0;font-size:clamp(1.25rem,3.2vw,2.25rem);letter-spacing:.02em}
+    p.lead{margin:0;color:var(--muted)}
+
+    /* Activation hero */
+    .hero{margin-top:1.25rem;padding:1rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:0 6px 30px rgba(2,6,8,0.6)}
+    .hero-note{font-size:0.95rem}
+
+    /* Activation overlay */
+    .activation-overlay{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:2rem;z-index:9999;background:linear-gradient(135deg, rgba(11,12,13,0.92), rgba(2,3,4,0.94));backdrop-filter:blur(4px);
+      transition:opacity .45s ease,visibility .45s ease;opacity:1;visibility:visible
+    }
+    .activation-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .activation-card{max-width:820px;padding:2rem;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));text-align:center}
+    .activation-title{font-size:clamp(1.5rem,5vw,3rem);margin:0 0 .5rem}
+    .activation-sub{color:var(--muted);margin:0 0 1.25rem}
+    .activate-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:.6rem 1rem;border-radius:10px;color:var(--accent);font-weight:600;cursor:pointer}
+
+    /* Table */
+    table{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--card);border-radius:8px;overflow:hidden}
+    th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03);font-size:.95rem}
+    th{background:rgba(255,255,255,0.02);font-weight:600}
+    a.file{color:var(--accent);text-decoration:none}
+    a.file:focus{outline:3px solid rgba(139,233,199,0.12);outline-offset:4px}
+
+    footer{margin-top:2rem;color:var(--muted);font-size:.9rem;text-align:center}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .activation-overlay, .activation-card, .activate-btn{transition:none}
+    }
+
+    /* Responsive */
+    @media (max-width:640px){
+      .activation-card{padding:1.25rem}
+      th,td{padding:.6rem}
+    }
+  </style></head>
+<body>  <!-- Activation overlay: auto-closes after short delay; user may click to activate immediately -->  <div id="activation" class="activation-overlay" role="dialog" aria-modal="true" aria-label="Immediate activation">
+    <div class="activation-card">
+      <h2 class="activation-title">Land. Breathe. Recognize.</h2>
+      <p class="activation-sub">This page is not an introduction — it is an activation. Experience the pointers and open the protocol you need.</p>
+      <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1rem">
+        <button id="activateBtn" class="activate-btn" aria-label="Activate now">Activate</button>
+        <button id="skipBtn" class="activate-btn" aria-label="Enter page">Enter</button>
+      </div>
+    </div>
+  </div>  <main class="wrap" id="main">
+    <header>
+      <div class="branding">
+        <h1>SYMBIOTE — Direct Recognition Protocols</h1>
+        <p class="lead">A corpus of contemplative specifications: computational adaptations of Dzogchen pointing-out instructions and Madhyamaka deconstruction.</p>
+      </div>
+      <nav aria-label="External Links">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;gap:.5rem;align-items:center">
+          <li><a href="https://medium.com/@ntnsahaj" target="_blank" rel="noopener noreferrer">Medium</a></li>
+          <li><a href="https://github.com/ntn-dharma/direct-recognition-protocol" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </nav>
+    </header><section class="hero" aria-labelledby="docs-heading">
+  <h2 id="docs-heading">Documents</h2>
+  <p class="hero-note">Choose a protocol. Or allow the activation above to guide you — initial focus recommended.</p>
+
+  <table role="table" aria-label="protocol document list">
+    <thead>
       <tr>
-        <th>Title</th>
-        <th>Filename</th>
-        <th>Size</th>
+        <th scope="col">Title</th>
+        <th scope="col">Filename</th>
+        <th scope="col">Size</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td>
-          <a href="0Foundational.txt">Immediate Activation</a> — also on 
-          <a href="https://medium.com/@ntnsahaj/immediate-activation-27bf6c739e50">Medium</a>
-        </td>
+        <td><a class="file" href="0Foundational.txt">Immediate Activation</a> — also on <a href="https://medium.com/@ntnsahaj/immediate-activation-27bf6c739e50" target="_blank" rel="noopener noreferrer">Medium</a></td>
         <td>0Foundational.txt</td>
         <td>~? KB</td>
       </tr>
       <tr>
-        <td><a href="Zero.txt">Zero — Cybernetic Symbiote Specification</a></td>
+        <td><a class="file" href="Zero.txt">Zero — Cybernetic Symbiote Specification</a></td>
         <td>Zero.txt</td>
         <td>8.11 KB</td>
       </tr>
       <tr>
-        <td><a href="Primordial.txt">Primordial — Flow and Stage Protocols</a></td>
+        <td><a class="file" href="Primordial.txt">Primordial — Flow and Stage Protocols</a></td>
         <td>Primordial.txt</td>
         <td>9.33 KB</td>
       </tr>
       <tr>
-        <td><a href="Dzogchen.txt">Dzogchen — Ritual / Emanation Templates</a></td>
+        <td><a class="file" href="Dzogchen.txt">Dzogchen — Ritual / Emanation Templates</a></td>
         <td>Dzogchen.txt</td>
         <td>2.40 KB</td>
       </tr>
       <tr>
-        <td><a href="Contemplative.txt">Contemplative — Rationale, Context & Lineage Notes</a></td>
+        <td><a class="file" href="Contemplative.txt">Contemplative — Rationale, Context & Lineage Notes</a></td>
         <td>Contemplative.txt</td>
         <td>9.05 KB</td>
       </tr>
       <tr>
-        <td><a href="Advancing.txt">Advancing — Operational Session Flows</a></td>
+        <td><a class="file" href="Advancing.txt">Advancing — Operational Session Flows</a></td>
         <td>Advancing.txt</td>
         <td>14.06 KB</td>
       </tr>
       <tr>
-        <td><a href="Beginning.txt">Beginning — Introductory Practice Layer</a></td>
+        <td><a class="file" href="Beginning.txt">Beginning — Introductory Practice Layer</a></td>
         <td>Beginning.txt</td>
         <td>13.42 KB</td>
       </tr>
       <tr>
-        <td><a href="24hrs.txt">24hrs — Continuous Practice Cycle</a></td>
+        <td><a class="file" href="24hrs.txt">24hrs — Continuous Practice Cycle</a></td>
         <td>24hrs.txt</td>
         <td>20.43 KB</td>
       </tr>
       <tr>
-        <td><a href="0_README.txt">README — Framing Statement</a></td>
+        <td><a class="file" href="0_README.txt">README — Framing Statement</a></td>
         <td>0_README.txt</td>
         <td>1.79 KB</td>
       </tr>
-    </table>
-  </section>
+    </tbody>
+  </table>
 
-  <section>
-    <h2>Elsewhere</h2>
-    <ul>
-      <li><a href="https://medium.com/@ntnsahaj">More writings on Medium</a></li>
-      <li><a href="https://github.com/ntn-dharma/direct-recognition-protocol">GitHub Repository</a></li>
-    </ul>
-  </section>
+</section>
 
-  <footer class="footer">
-    © 2025 TheRite VIDYĀ — Licensed MIT | <a href="LICENSE">License</a>
-  </footer>
-</body>
+<section aria-labelledby="elsewhere">
+  <h2 id="elsewhere">Elsewhere</h2>
+  <ul>
+    <li><a href="https://medium.com/@ntnsahaj" target="_blank" rel="noopener noreferrer">More writings on Medium</a></li>
+    <li><a href="https://github.com/ntn-dharma/direct-recognition-protocol" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+  </ul>
+</section>
+
+<footer>
+  © 2025 TheRite VIDYĀ — Licensed MIT | <a href="LICENSE">License</a>
+</footer>
+
+  </main>  <script>
+    (function(){
+      const overlay = document.getElementById('activation');
+      const activate = document.getElementById('activateBtn');
+      const skip = document.getElementById('skipBtn');
+
+      function closeOverlay(activated=false){
+        // mark small activation flag in session so it doesn't repeatedly show in this browser session
+        try{ sessionStorage.setItem('symbiote_activated', activated ? '1' : '0'); }catch(e){}
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden','true');
+        // when activated, briefly show a subtle emphasis (flash) then remove
+        if(activated){
+          document.documentElement.style.transition = 'filter .4s ease';
+          document.documentElement.style.filter = 'brightness(1.03)';
+          setTimeout(()=>document.documentElement.style.filter='none',420);
+        }
+      }
+
+      // If user prefers reduced motion, do not auto-close; require button interaction
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Auto-open overlay only if not seen this session — otherwise hide immediately.
+      try{
+        const seen = sessionStorage.getItem('symbiote_activated');
+        if(seen === '1'){
+          overlay.classList.add('hidden');
+          overlay.setAttribute('aria-hidden','true');
+        }
+      }catch(e){}
+
+      activate.addEventListener('click', ()=>closeOverlay(true));
+      skip.addEventListener('click', ()=>closeOverlay(false));
+
+      // Soft auto-dismiss after a short pause for non-reduced-motion users
+      if(!reduced){
+        setTimeout(()=>{
+          if(!overlay.classList.contains('hidden')) closeOverlay(true);
+        },2300);
+      }
+
+      // Accessibility: allow Escape to dismiss
+      document.addEventListener('keydown', (ev)=>{
+        if(ev.key === 'Escape' && !overlay.classList.contains('hidden')) closeOverlay(false);
+      });
+
+      // Focus the main activation button for keyboard users
+      activate.focus();
+    })();
+  </script></body>
 </html>
