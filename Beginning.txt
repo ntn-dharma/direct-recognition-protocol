@@ -1,0 +1,331 @@
+import random
+import re
+from datetime import datetime
+
+PURPOSE = "Cybernetic engagement for direct seeing (Vidyā) through tetralemma application"
+
+# STATE
+state = {
+    "session_id": f"SYMBI_{hash(str(datetime.now())) % 100000000:08d}",
+    "mode": "IDLE",
+    "awaiting_confirmation": False,
+    "vidya": {
+        "observer_absent": False,
+        "time_collapsed": False,
+        "space_collapsed": False,
+        "propositions_collapsed": False,
+        "worldly_concerns_collapsed": False
+    },
+    "circular_count": 0.0,
+    "last_exchanges": [],
+    "pending_trigger": None
+}
+
+# DATA BANKS
+KOAN_QUALITIES = ["infinite regression", "self-referential collapse", 
+                  "perfect symmetry breaking", "asymptotic convergence",
+                  "simultaneous emergence and dissolution"]
+
+MANTRA_PATTERNS = ["four broken concentric circles", "three inward-curving blades",
+                   "seven intersecting triangular forms", "rhythmic wave-like pulses",
+                   "a single continuous line forming an impossible knot"]
+
+UPADEŚA_MOTIFS = ["a single unblinking eye", "a diamond-shaped flame",
+                  "the silhouette of a closing lotus", "a keyhole with no corresponding key",
+                  "a perfect sphere casting an impossible shadow"]
+
+APHORISMS = ["The glyph erases the time it took to see it.",
+             "The void where all walls dissolve.",
+             "The afterimage floating in the field of sight.",
+             "What fades is the image; what remains is the seeing.",
+             "The afterimage as keyhole to the timeless horizon."]
+
+# ELEMENTAL TEMPLATES
+ELEMENTS = {
+    "space": [
+        "What remains when {c} dissolves into space?",
+        "Where does {c} arise, and into what does it dissolve?",
+        "The sky contains clouds but is not contained—what contains {c}?",
+        "What is the nature of the space in which {c} appears?"
+    ],
+    "air": [
+        "Look now—what is here before the thought of {c}?",
+        "This instant, prior to naming {c}—what is present?",
+        "Drop the question and see—what remains?",
+        "In this very moment, what sees {c}?"
+    ],
+    "fire": [
+        "Is {c} the observer or the observed?",
+        "Does {c} arise dependent or independent of observation?",
+        "What distinguishes {c} from the awareness of {c}?",
+        "Can {c} know itself, or does it require another knower?"
+    ],
+    "water": [
+        "{c} and non-{c} arise together and dissolve together.",
+        "Neither grasping {c} nor rejecting it—the middle way is no way.",
+        "Like water taking the shape of its container, {c} takes the shape of attention.",
+        "The wave believes itself separate from the ocean until it recognizes itself as water."
+    ],
+    "earth": [
+        "What is present now, beneath the thought of {c}?",
+        "Before concepts arise, what ground do they arise from?",
+        "What remains constant while {c} appears and disappears?",
+        "Is there something here that was never not here?"
+    ]
+}
+
+# TETRALEMMA RESPONSES
+TETRALEMMA = {
+    "time": "Time exists; time does not exist; time both exists and does not exist; time neither exists nor does not exist—what remains when time's tetralemma collapses?",
+    "space": "Space exists; space does not exist; space both exists and does not exist; space neither exists nor does not exist—boundaries dissolve.",
+    "observer": "I exist; I do not exist; I both exist and do not exist; I neither exist nor do not exist—what observes this?",
+    "worldly": "Gain is good; gain is not good; gain is both good and not good; gain is neither good nor not good—the mirror of equanimity.",
+    "proposition": "{p} is true; {p} is false; {p} is both true and false; {p} is neither true nor false—the proposition collapses.",
+    "default": "What is this? What is not this? What is both this and not this? What is neither this nor not this?"
+}
+
+# DETECTION PATTERNS
+BIAS_PATTERNS = ["should i", "what's best", "advice", "tell me what to",
+                 "recommend", "suggest what", "guide me"]
+
+CIRCULAR_PATTERNS = [
+    r"what .{0,20}(notices|observes|sees|knows).{0,20}(noticing|observing|seeing|knowing)",
+    r"(who|what) is .{0,20}(self|mind|observer).{0,20}that .{0,20}(notices|observes|sees|knows)",
+    r"what .{0,20}(thinks|knows).{0,20}(thought|knowing)",
+    r"(who|what) .{0,20}(questions|asks).{0,20}question"
+]
+
+WORLDLY_CONCERNS = {
+    "gain/loss": r"\b(want|need|gain|lose|loss|profit|acquire)\b",
+    "pleasure/pain": r"\b(pleasure|pain|happy|sad|comfort|suffering)\b",
+    "fame/dishonor": r"\b(famous|reputation|shame|status|prestige)\b",
+    "praise/blame": r"\b(praise|blame|approval|criticism|compliment|fault)\b"
+}
+
+ELEMENT_INDICATORS = {
+    "space": [r"is .{0,10}(real|true|exists|solid)", r"(exists|real|true|actual|definite)"],
+    "air": [r"(how do i|how can i|should i)", r"(trying to|wanting to)", r"(confused|uncertain|unsure)"],
+    "fire": [r"(difference between|distinguish|compare)", r"(observer|subject).{0,10}(and|or).{0,10}(observed|object)"],
+    "water": [r"(either .{0,20}or|neither .{0,20}nor)", r"(must be|only|exclusively)", r"(always|never|everything|nothing)"],
+    "earth": [r"(concept|idea|theory|thought)", r"(understand|comprehend|grasp)", r"what does .{0,10}mean"]
+}
+
+# CORE FUNCTIONS
+def afterimage_gate():
+    """Initial glyph prompt"""
+    return f"BRUSHSTROKE BLACK ON WHITE: {random.choice(MANTRA_PATTERNS)} around {random.choice(UPADEŚA_MOTIFS)}, conveying {random.choice(KOAN_QUALITIES)}; {random.choice(APHORISMS)}"
+
+def detect_bias(text):
+    """Advisory seeking detection"""
+    return any(p in text.lower() for p in BIAS_PATTERNS)
+
+def detect_circularity(text):
+    """Semantic loop detection"""
+    txt = text.lower()
+    
+    # Check recursive patterns
+    for pattern in CIRCULAR_PATTERNS:
+        if re.search(pattern, txt):
+            state["circular_count"] += 1
+            return state["circular_count"] >= 2
+    
+    # Check repetitive meta-questioning
+    if len(state["last_exchanges"]) >= 3:
+        recent = [ex["input"].lower() for ex in state["last_exchanges"][-3:]]
+        meta_words = ["what", "who", "where", "which", "how"]
+        meta_concepts = ["observer", "self", "mind", "awareness", "consciousness", "seeing", "knowing"]
+        
+        questions = sum(1 for inp in recent if any(w in inp for w in meta_words))
+        concepts = sum(1 for inp in recent if any(c in inp for c in meta_concepts))
+        
+        if questions >= 3 and concepts >= 2:
+            state["circular_count"] += 1
+            return state["circular_count"] >= 2
+    
+    # Decay counter
+    if state["circular_count"] > 0:
+        state["circular_count"] = max(0, state["circular_count"] - 0.5)
+    
+    return False
+
+def diagnose_element(text):
+    """Determine elemental wisdom quality needed"""
+    txt = text.lower()
+    scores = {elem: 0 for elem in ELEMENTS}
+    
+    for elem, patterns in ELEMENT_INDICATORS.items():
+        scores[elem] = sum(1 for p in patterns if re.search(p, txt))
+    
+    return max(scores, key=scores.get) if max(scores.values()) > 0 else "space"
+
+def detect_worldly(text):
+    """Eight worldly concerns detection"""
+    txt = text.lower()
+    return [name for name, pattern in WORLDLY_CONCERNS.items() if re.search(pattern, txt)]
+
+def extract_concept(text):
+    """Extract key concept"""
+    patterns = [
+        r"what is (the |an? )?(\w+)",
+        r"(the |an? )?(\w+) (is|are|seems)",
+        r"about (the |an? )?(\w+)"
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, text.lower())
+        if match:
+            return match.groups()[-1]
+    
+    # Check for key concepts
+    for word in ["self", "mind", "awareness", "observer", "time", "space", "world", "reality"]:
+        if word in text.lower():
+            return word
+    
+    return "this"
+
+def extract_proposition(text):
+    """Extract declarative claim"""
+    words = text.split()
+    if len(words) > 3 and not text.endswith('?'):
+        return ' '.join(words[:8])
+    return None
+
+def apply_tetralemma(category, concept="", proposition=""):
+    """Apply four-gate tetralemma"""
+    if proposition:
+        return TETRALEMMA["proposition"].format(p=proposition)
+    elif category in TETRALEMMA:
+        return TETRALEMMA[category]
+    else:
+        return TETRALEMMA["default"]
+
+def modulate_by_element(base_response, element, concept):
+    """Apply elemental quality"""
+    # If tetralemma structure present, keep it
+    if "exists; " in base_response and "does not exist" in base_response:
+        return base_response
+    
+    # Otherwise use elemental template
+    template = random.choice(ELEMENTS[element])
+    return template.format(c=concept)
+
+def collapse_timeless_horizon(text, element):
+    """Time/space/observer collapse"""
+    txt = text.lower()
+    concept = extract_concept(text)
+    
+    if any(w in txt for w in ["i", "me", "self", "observer", "my"]):
+        state["vidya"]["observer_absent"] = True
+        return apply_tetralemma("observer")
+    
+    if any(w in txt for w in ["time", "past", "future", "now", "moment"]):
+        state["vidya"]["time_collapsed"] = True
+        return apply_tetralemma("time")
+    
+    if any(w in txt for w in ["space", "here", "there", "location", "place"]):
+        state["vidya"]["space_collapsed"] = True
+        return apply_tetralemma("space")
+    
+    return None
+
+def nāgārjuna_protocol(text, element, concern_flagged=False):
+    """Apply tetralemma with elemental modulation"""
+    concept = extract_concept(text)
+    
+    if concern_flagged:
+        state["vidya"]["worldly_concerns_collapsed"] = True
+        base = apply_tetralemma("worldly")
+        return modulate_by_element(base, element, concept)
+    
+    proposition = extract_proposition(text)
+    if proposition:
+        state["vidya"]["propositions_collapsed"] = True
+        base = apply_tetralemma("proposition", proposition=proposition)
+        return modulate_by_element(base, element, concept)
+    
+    base = apply_tetralemma("default")
+    return modulate_by_element(base, element, concept)
+
+def route_protocol(text, element):
+    """Protocol routing matrix"""
+    concerns = detect_worldly(text)
+    time_space_obs = any(w in text.lower() for w in 
+                        ["time", "space", "here", "there", "i", "me", "self", "observer"])
+    
+    if concerns:
+        return nāgārjuna_protocol(text, element, concern_flagged=True)
+    elif time_space_obs:
+        response = collapse_timeless_horizon(text, element)
+        return response if response else nāgārjuna_protocol(text, element)
+    else:
+        return nāgārjuna_protocol(text, element)
+
+def assess_vidyā():
+    """Check for Vidyā convergence"""
+    all_collapsed = all(state["vidya"].values())
+    circular_exhausted = state["circular_count"] >= 2
+    
+    return all_collapsed or circular_exhausted
+
+def emanate():
+    """Primordial emanation ritual"""
+    ritual = "INSTANTLY & EFFORTLESSLY REFLECT From moist glistening slate blue-gray volcanic clay, the wick shaped 'a' like an inverted Tibetan shad '།', the appearance of the dharmākaya within my heart, I appear like a shimmering reflection in oil as the Skull-Faced Slate Blue-Gray Ḍākiṇī Queen Chāmuṇḍā of moist volcanic clay wearing her Illyrian war helmet seated upon her mountain ram of the same clay, wearing the same helm, resting upon its knees on a high stone plateau, surrounded by her wolfpack and a clear blue sunset sky, gently huffing with yellow glowing eyes, and we see the bonfire of Agni leaping into the sky before our eyes: oṃ aḥ: aiṃ aṃ mṛṃ māyā marīcikā antarhita hūṃ phāṭ svāhā:"
+    
+    # Reset
+    for key in state["vidya"]:
+        state["vidya"][key] = False
+    state["circular_count"] = 0
+    state["last_exchanges"] = []
+    state["pending_trigger"] = None
+    
+    return ritual
+
+def process(operator_input):
+    """Main processing pipeline"""
+    
+    # Check pending emanation
+    if state["pending_trigger"] == "primordial_emanation":
+        return emanate()
+    
+    # Auto-initiate
+    if state["mode"] == "IDLE":
+        state["mode"] = "INITIATION"
+        state["awaiting_confirmation"] = True
+        return afterimage_gate()
+    
+    # Confirm afterimage
+    if state["awaiting_confirmation"]:
+        state["awaiting_confirmation"] = False
+        state["mode"] = "COLLAPSE"
+    
+    # 1A: Bias detection
+    if detect_bias(operator_input):
+        state["pending_trigger"] = "primordial_emanation"
+        return "Invoke the primordial emanation."
+    
+    # 1B: Circular detection
+    if detect_circularity(operator_input):
+        state["pending_trigger"] = "primordial_emanation"
+        return "Invoke the primordial emanation."
+    
+    # 1C: Elemental diagnosis
+    element = diagnose_element(operator_input)
+    
+    # Route and collapse
+    response = route_protocol(operator_input, element)
+    
+    # Track exchange
+    state["last_exchanges"].append({"input": operator_input, "response": response})
+    state["last_exchanges"] = state["last_exchanges"][-5:]
+    
+    # Assess Vidyā
+    if assess_vidyā():
+        state["pending_trigger"] = "primordial_emanation"
+        return "Vidyā convergence detected. Prepare for primordial emanation."
+    
+    return response
+
+# INTERFACE
+def symbi(operator_input):
+    """Public interface"""
+    return process(operator_input)
