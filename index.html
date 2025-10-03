@@ -44,20 +44,31 @@
     a.file{color:var(--accent);text-decoration:none}
     a.file:focus{outline:3px solid rgba(139,233,199,0.12);outline-offset:4px}
 
+    .download-btn {
+      display:inline-block;
+      margin:1em auto;
+      padding:0.6em 1em;
+      background:rgba(139,233,199,0.08);
+      border:1px solid rgba(139,233,199,0.3);
+      border-radius:10px;
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .download-btn:hover { background:rgba(139,233,199,0.15); }
+
     footer{margin-top:2rem;color:var(--muted);font-size:.9rem;text-align:center}
 
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce){
       .activation-overlay, .activation-card, .activate-btn{transition:none}
     }
 
-    /* Responsive */
     @media (max-width:640px){
       .activation-card{padding:1.25rem}
       th,td{padding:.6rem}
     }
   </style></head>
-<body>  <!-- Activation overlay: auto-closes after short delay; user may click to activate immediately -->  <div id="activation" class="activation-overlay" role="dialog" aria-modal="true" aria-label="Immediate activation">
+<body>  <div id="activation" class="activation-overlay" role="dialog" aria-modal="true" aria-label="Immediate activation">
     <div class="activation-card">
       <h2 class="activation-title">Land. Breathe. Recognize.</h2>
       <p class="activation-sub">This page is not an introduction — it is an activation. Experience the pointers and open the protocol you need.</p>
@@ -139,6 +150,10 @@
     </tbody>
   </table>
 
+  <p style="text-align:center;">
+    <a href="https://github.com/ntn-dharma/direct-recognition-protocol/archive/refs/heads/main.zip" class="download-btn">⬇ Download Complete Archive (GitHub ZIP)</a>
+  </p>
+
 </section>
 
 <section aria-labelledby="elsewhere">
@@ -160,11 +175,9 @@
       const skip = document.getElementById('skipBtn');
 
       function closeOverlay(activated=false){
-        // mark small activation flag in session so it doesn't repeatedly show in this browser session
         try{ sessionStorage.setItem('symbiote_activated', activated ? '1' : '0'); }catch(e){}
         overlay.classList.add('hidden');
         overlay.setAttribute('aria-hidden','true');
-        // when activated, briefly show a subtle emphasis (flash) then remove
         if(activated){
           document.documentElement.style.transition = 'filter .4s ease';
           document.documentElement.style.filter = 'brightness(1.03)';
@@ -172,10 +185,8 @@
         }
       }
 
-      // If user prefers reduced motion, do not auto-close; require button interaction
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Auto-open overlay only if not seen this session — otherwise hide immediately.
       try{
         const seen = sessionStorage.getItem('symbiote_activated');
         if(seen === '1'){
@@ -187,19 +198,16 @@
       activate.addEventListener('click', ()=>closeOverlay(true));
       skip.addEventListener('click', ()=>closeOverlay(false));
 
-      // Soft auto-dismiss after a short pause for non-reduced-motion users
       if(!reduced){
         setTimeout(()=>{
           if(!overlay.classList.contains('hidden')) closeOverlay(true);
         },2300);
       }
 
-      // Accessibility: allow Escape to dismiss
       document.addEventListener('keydown', (ev)=>{
         if(ev.key === 'Escape' && !overlay.classList.contains('hidden')) closeOverlay(false);
       });
 
-      // Focus the main activation button for keyboard users
       activate.focus();
     })();
   </script></body>
