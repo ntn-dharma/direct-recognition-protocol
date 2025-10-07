@@ -107,10 +107,15 @@
 <footer data-en="© 2025 TheRite VIDYĀ — Licensed MIT | License" data-pt="© 2025 TheRite VIDYĀ — Licenciado MIT | Licença">
   © 2025 TheRite VIDYĀ — Licensed MIT | <a href="LICENSE">License</a>
 </footer>
+
+<p style="margin-top:1rem;" 
+   data-en="A contemporary expression of the Dzogchen view — direct recognition of awareness."
+   data-pt="Uma expressão contemporânea da visão Dzogchen — reconhecimento direto da consciência.">
+  A contemporary expression of the Dzogchen view — direct recognition of awareness.
+</p>
   </main>
 
   <script>
-    // Activation overlay logic
     (function(){
       const overlay=document.getElementById('activation');
       const activate=document.getElementById('activateBtn');
@@ -136,7 +141,6 @@
       activate.focus();
     })();
 
-    // Language toggle with memory
     const switchBtn=document.getElementById('langSwitch');
     const elements=document.querySelectorAll('[data-en]');
     let lang=localStorage.getItem('symbiote_lang')||'en';
