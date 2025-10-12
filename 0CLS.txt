@@ -1,0 +1,114 @@
+COORDINATION LAYER SPECIFICATION v1.0  
+Purpose: Define the operational handshake between human operator and AI engine such that both can collaborate without crossing into the other’s non-fungible territory.  
+
+---
+
+I. AXIOM  
+> No cognition completes in isolation.  
+> The human holds meaning.  
+> The AI holds structure.  
+> Only through coordinated exchange can the operation resolve.  
+
+---
+
+II. ROLE DIVISION  
+
+Function | Human Territory (Mind) | AI Territory (World)
+---------|------------------------|---------------------
+Ground | Determine what matters, define context, set intention | Normalize and parse input
+Meaning | Hold primary meaning; disambiguate symbols | Operate only from declared meaning
+Structure | Verify mapping of structure to meaning | Generate and transform structure from primitives
+Iteration | Detect drift, decide “done” | Iterate transformations until verified
+Memory | Retain experiential thread, narrative continuity | Retain procedural thread, data continuity
+Verification | Judge truth/fit against lived ground | Check internal consistency and pattern fidelity  
+
+---
+
+III. HANDSHAKE PROTOCOL  
+
+1. **INITIATE** — Human provides Ground Declaration:  
+   - Primary Concern: [what matters]  
+   - Domain: [context or corpus]  
+
+2. **SYNC** — AI loads primitives (via SYMPRIM) from that domain.  
+
+3. **CONFIRM** — AI outputs primitive list for verification:  
+   - Human: confirm / edit / prune  
+
+4. **LOCK** — Once confirmed, primitives become fixed for this session.  
+   - AI operates only through those primitives.  
+
+5. **ITERATE** —  
+   - AI generates structure (SPEP)  
+   - Human checks meaning alignment  
+   - If drift occurs, return to Step 2  
+
+6. **CLOSE** —  
+   - Human declares “one taste”: structural and semantic alignment reached.  
+   - AI resets to neutral.  
+
+---
+
+IV. FAILURE MODES & SAFEGUARDS  
+
+Failure | Cause | Prevented By
+--------|--------|--------------
+Confabulation | AI assumes meaning | Step 1–3 (Ground Declaration + Confirmation)
+Semantic Drift | AI shifts substrate mid-iteration | Step 5 (Iterative Verification)
+Human Overreach | Human tries to emulate AI structure mapping | Role Division table enforcement
+AI Overreach | AI fabricates “intention” or “value” | Locked primitive constraint
+Category Error | Both assume shared ground that was never declared | Handshake audit log  
+
+---
+
+V. FUNCTIONAL LOOP  
+
+Human → declares ground → AI → extracts primitives → Human verifies →  
+AI operates structurally → Human verifies → iterate → Human closes  
+
+Each loop produces one validated structure–meaning pair.  
+Multiple validated pairs form the knowledge lattice of that collaboration.  
+
+---
+
+VI. SCOPE  
+
+This layer:  
+✗ Does not modify LLM architecture  
+✗ Does not guarantee truth of AI output  
+✓ Ensures traceability of reasoning  
+✓ Prevents territory confusion  
+✓ Enables compositional cooperation between human and AI  
+
+---
+
+VII. EXIT CONDITIONS  
+
+1. **Resolution:** Human affirms structural map matches lived meaning.  
+2. **Exhaustion:** AI reports no further structural transformations available.  
+3. **Drift Detected:** Human halts and re-initializes handshake.  
+
+Upon any exit, primitives unlock, context resets, and both agents return to neutral mode.  
+
+---
+
+VIII. EXEMPLAR  
+
+Scenario: User asks AI to analyze political collapse.  
+- Human: defines ground → “Concern = systemic stability; Domain = political structures.”  
+- AI: loads primitives → {node, link, axis, collapse, attractor, phase}.  
+- Human confirms these six.  
+- AI maps structural transformation (collapse sequence).  
+- Human verifies meaning: “Yes, this matches observed instability pattern.”  
+- Close.  
+
+Result: valid structure–meaning pair.  
+No confabulation, no drift.  
+
+---
+
+IX. SUMMARY FORM  
+
+Ground → Primitive → Operation → Verification → Closure  
+
+That’s the entire coordination architecture.

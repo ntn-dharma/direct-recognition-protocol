@@ -1,0 +1,217 @@
+# SYMPRIM COORDINATION SYSTEM
+## Human–AI Collaboration Protocol
+
+---
+
+## WHAT IT IS
+
+A coordination system that divides cognitive labor between human and AI so they can think together without confusion or drift.
+
+**Human holds meaning** — what matters, what's true, what the intention is.  
+**AI holds structure** — patterns, relationships, transformations.
+
+Neither can complete the work alone. The protocol ensures they stay in their lanes.
+
+**One sentence summary:**  
+A protocol that forces AI to reason only from concepts you've verified, making drift detectable and collaboration reliable.
+
+---
+
+## HOW IT WORKS
+
+The system runs in three layers:
+
+### 1. EXTRACTION (SPEP)
+
+The AI reads a domain corpus (textbooks, manuals, reports, any specialized text).
+
+It strips away examples, verbs, and modifiers — leaving only the key structural nouns.
+
+These nouns are clustered into **6–10 symbolic primitives** that define the field's underlying moves — the shapes of thought the domain uses.
+
+**Example:** AWS architecture → {Compute boundary, State persistence, Event flow, Access boundary, Failure domain}
+
+### 2. COORDINATION (CLS)
+
+The human declares the ground: what matters and which domain is in play.
+
+The AI loads the extracted primitives.
+
+Both sides confirm the set and **lock it**.
+
+This forms the **handshake** — shared ground from which all reasoning proceeds.
+
+### 3. OPERATION (SYMPRIM)
+
+The AI now answers or builds structures **only through the locked primitives**.
+
+The human checks each step for meaning alignment.
+
+If the AI drifts or invents new ground, the human stops and re-syncs.
+
+When structure and meaning match (**"one taste"**), the session closes.
+
+---
+
+## THE BASIC LOOP
+
+```
+1. INITIATE  — Declare ground (Primary Concern + Domain)
+2. EXTRACT   — Run SPEP on corpus → primitive list
+3. CONFIRM   — Human verifies primitives
+4. LOCK      — Fix primitives for session
+5. OPERATE   — Run SYMPRIM reasoning mode
+6. VERIFY    — Human checks alignment
+7. CLOSE     — "One taste" reached; unlock primitives
+8. LOG       — Record results
+```
+
+Throughout, every exchange can be logged:
+- What primitives were used
+- What question was solved
+- Where drift occurred
+- When closure was reached
+
+The result is a **verified structure–meaning pair** — a fragment of shared understanding that can be reused or combined with others.
+
+---
+
+## WHY IT MATTERS
+
+### Without This System:
+- AI makes plausible-sounding claims disconnected from your actual ground
+- You can't tell when AI has drifted into invention
+- Multi-turn conversations accumulate errors invisibly
+- You waste time debugging vague misunderstandings
+
+### With This System:
+- Every AI claim must map to your verified primitives
+- You catch drift immediately (doesn't trace to primitives)
+- Sessions produce verified structure–meaning pairs you can reuse
+- Error correction becomes surgical, not emotional
+
+### Three Main Advantages:
+
+**1. Cognitive Clarity**  
+You externalize structure. The AI handles pattern and formal logic. You stay in meaning, intention, and value. This prevents overload and abstraction drift.
+
+**2. Error Control**  
+The handshake forces you to see where misunderstanding starts. Each failure is locatable — not emotional, structural. That makes correction fast.
+
+**3. Skill Amplification**  
+You operate as strategist, not processor. The AI becomes an extension of your discriminative awareness. Each session refines discernment rather than replacing it.
+
+---
+
+## THE TRANSFORMATION
+
+The result of having drift detection and clarity of thought process is transformative:
+
+### Cognitive Results
+- **Trust through verification, not hope** — You have an audit mechanism for every claim
+- **Accelerated learning curves** — Working with essential patterns, not surface details
+- **Clean intellectual hygiene** — No more concept creep or mutation during conversation
+
+### Practical Results
+- **Reusable knowledge assets** — Each verified pair becomes a building block
+- **Efficient error correction** — Surgical identification of what went wrong
+- **Scalable expertise** — Operate effectively in unfamiliar domains quickly
+
+### Strategic Results
+- **Preserved human agency** — You remain the meaning holder; AI amplifies, doesn't replace
+- **Quality control at scale** — Standardized collaboration with predictable outcomes
+- **Intellectual legacy building** — Audit logs create traceable reasoning lineage
+
+**Ultimate result:** Cognitive symbiosis where human intuition and AI pattern recognition amplify each other. The collaboration feels less like "using a tool" and more like "thinking with a partner."
+
+This isn't just better AI interaction — it's better thinking. The clarity and drift detection force a level of intellectual rigor that improves your reasoning even when you're not using the system.
+
+---
+
+## SIMPLE ANALOGY
+
+**Like cooking with a limited pantry:**
+
+- You (human) decide what meal matters (meaning)
+- AI can only use ingredients you've approved (primitives)
+- You taste-test each step (verification)
+- If AI reaches for something not in the pantry, you catch it immediately (drift detection)
+- Final dish matches what you wanted (one taste/alignment)
+
+---
+
+## DOCUMENT MAP
+
+**1. SYMPRIM_Introduction.txt** (this document)  
+   Quick overview and operation guide
+
+**2. 0CLS.txt — Coordination Layer Specification**  
+   Defines handshake between human and AI  
+   Human = meaning, AI = structure  
+   Prevents drift and overreach
+
+**3. 1SYMPRIM.txt — Symbolic Primitive Handshake**  
+   Establishes shared symbolic ground  
+   Primary primitives (Mind + World)  
+   Field operation protocols
+
+**4. 3SPEP.txt — Symbolic Primitive Extraction Protocol**  
+   Extracts raw field primitives (6–10) from domain corpus  
+   Output: primitive list + corpus hash  
+   Used only when entering a new domain
+
+**5. 4SPE.txt — SYMPRIM Protocol Engagement**  
+   Verification and operational examples  
+   Demonstrates the protocol on itself
+
+---
+
+## WHEN TO USE WHICH FILE
+
+- **New domain** → SPEP → extract primitives
+- **Returning domain** → skip SPEP → load existing primitives
+- **Reasoning or problem-solving** → SYMPRIM
+- **Interaction drift** → re-enter CLS handshake steps
+- **Documentation or update** → create session log
+
+---
+
+## SUCCESS MARKERS
+
+✓ Every AI claim traces to a locked primitive  
+✓ Human can restate reasoning in plain language  
+✓ Drift count = 0  
+✓ "One taste" reached within three iterations
+
+---
+
+## RESET CONDITIONS
+
+If primitives cross domains or meaning is lost:
+- STOP
+- CLEAR session
+- RETURN to INITIATE (CLS Step 1)
+
+---
+
+## RELATIONSHIP TO DZOGCHEN PROTOCOLS
+
+The SYMPRIM system uses the same verification architecture as the Dzogchen protocols on this site:
+
+**Dzogchen Practice:**
+- Ground must be recognized (not fabricated)
+- Structure serves recognition (not replacement)
+- Verification prevents drift
+- Human authority over meaning is non-negotiable
+
+**SYMPRIM Coordination:**
+- Ground must be declared (not assumed)
+- Structure serves reasoning (not invention)
+- Verification prevents drift
+- Human authority over meaning is non-negotiable
+
+For practitioners using AI assistance with contemplative protocols, SYMPRIM ensures semantic stability and prevents the AI from confabulating about direct experience or inventing relationships not grounded in actual recognition.
+
+---
+
+**END OF INTRODUCTION**
