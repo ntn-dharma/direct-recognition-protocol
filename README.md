@@ -59,8 +59,8 @@ Technical protocols ensuring semantic stability during human-AI collaboration:
 - `SYMPRIM_Introduction.txt` — Complete overview and operation guide
 - `0CLS.txt` — Coordination Layer Specification
 - `1SYMPRIM.txt` — Symbolic Primitive Handshake protocol
-- `3SPEP.txt` — Symbolic Primitive Extraction Protocol
-- `4SPE.txt` — Protocol Engagement & Verification
+- `2SPEP.txt` — Symbolic Primitive Extraction Protocol
+- `3SPE.txt` — Protocol Engagement & Verification
 
 ### Visual Materials
 - `Afterimage_Gate.jpg` — Visual meditation for direct recognition
