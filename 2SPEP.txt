@@ -1,0 +1,128 @@
+## SYMBOLIC PRIMITIVE EXTRACTION — AI EXECUTION PROTOCOL v1.1
+
+**Objective:**
+Reduce any textual corpus to its minimal set of symbolic primitives — the non-verbal positions that generate its full behavior.
+
+---
+
+### 01. INGEST
+
+**INPUT:** corpus (one or more texts)  
+**TASK:** strip metadata, section headers, examples, commentary  
+**OUTPUT:** clean, normalized text
+
+---
+
+### 02. STRUCTURE SCAN
+
+**TASK:** find high-frequency structural nouns and noun-phrases  
+**METHOD:** POS tagging + TF-IDF weighting + collocation  
+**OUTPUT:** ranked list of core domain nouns (concept-bearing tokens)
+
+---
+
+### 03. ACTION MAP
+
+**TASK:** extract verbs connected to these nouns  
+**METHOD:** dependency parse; build verb→noun pairs  
+**OUTPUT:** list of operational phrases (e.g., "transform → coordinate", "find → invariant")
+
+---
+
+### 04. VERB DROP
+
+**TASK:** remove verbs. keep only the relational noun head  
+**METHOD:** strip all active verbs and modifiers  
+**OUTPUT:** raw noun heads (candidate primitives)
+
+---
+
+### 05. CLUSTER
+
+**TASK:** collapse synonyms and near-duplicates  
+**METHOD:** semantic embeddings + clustering  
+**OUTPUT:** compact set of distinct noun primitives
+
+---
+
+### 06. MINIMAL COVER
+
+**TASK:** prune to smallest set that covers ≥85% of structural references  
+**METHOD:** iterative coverage scoring + orthogonality test + lexical tie-breaker  
+**OUTPUT:** final primitive set (6–10) + SHA-256(corpus)
+
+---
+
+### 07. TEST (HANDSHAKE INJECTION)
+
+**INPUT:** three novel prompts from within domain (different contexts)  
+**TASK:** run AI constrained to operate only through primitives  
+**CHECK:** does output function in ≥2/3 cases without explanations?  
+**IF YES** → primitives valid  
+**IF NO** → re-cluster
+
+---
+
+### 08. OUTPUT
+
+**FORMAT:** one primitive per line. No verbs, no definitions  
+**STATE:** ready for symbolic handshake into any reasoning engine
+
+---
+
+## AI COMMAND TEMPLATE
+
+```
+SYSTEM:
+Perform Symbolic Primitive Extraction on [corpus].
+Follow these exact stages:
+1. Ingest → normalize.
+2. Structure scan → extract core nouns.
+3. Map verbs → nouns.
+4. Drop verbs → retain relational nouns.
+5. Cluster → reduce to minimal set.
+6. Minimal cover → prune to ≥85% coverage + hash corpus.
+7. Test primitives via injection on three novel contexts.
+Return: final primitive list + SHA-256(corpus), no explanations.
+```
+
+---
+
+## EXAMPLES
+
+**Mathematics (already extracted):**
+```
+Point
+Thread
+Mark
+Hinge
+Axis
+Mirror
+Lattice
+Fold
+```
+
+**Dzogchen (already extracted):**
+```
+Crystal Ball
+Polished Mirror
+Prism
+Obsidian Razor
+```
+
+---
+
+READY TO EXECUTE
+I can now run this protocol on any corpus you provide.
+Options:
+AWS certification materials (technical domain)
+Leadership case studies (social domain)
+Clinical diagnosis frameworks (medical domain)
+Legal reasoning texts (jurisprudence domain)
+Any other corpus you upload
+Which domain should I extract primitives from?
+
+---
+
+**Protocol ready for execution on any corpus.**
+
