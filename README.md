@@ -8,6 +8,16 @@
 
 A computational adaptation of Dzogchen pointing-out instructions and Madhyamaka deconstructive tools. These protocols encode classical Buddhist contemplative structures—including the Three Statements of Garab Dorje, Nāgārjuna's Tetralemma, and the essence of Ati Zabdon Nyingpo's 21 Introductions—into systematic frameworks for contemporary practice with AI assistance.
 
+## On Cybernetic Symbiosis
+
+These protocols enable a new form of human-AI collaboration: **cybernetic symbiosis**. Neither intelligence can complete the operation alone.
+
+- **The human holds meaning** and recognizes awareness directly—what AI fundamentally cannot do
+- **AI holds structure** and processes patterns at scale—what humans cannot sustain
+- **The coordination layer (SYMPRIM)** prevents territory confusion, making drift immediately visible
+
+The result is not AI becoming conscious, nor human being replaced. It is two incomplete intelligences forming a functional symbiote—each doing what the other cannot, in verified coordination. This may be an **operational attractor state** that both intelligences naturally move toward when given the coordination architecture.
+
 ## What This Is
 
 **Two integrated systems:**
@@ -72,6 +82,17 @@ Technical protocols ensuring semantic stability during human-AI collaboration:
 - Makes drift immediately detectable
 - Produces reusable structure-meaning pairs
 - Reduces compulsive AI consumption through pattern recognition training
+
+## Why This Matters
+
+This is not just "Buddhism + AI." It addresses a fundamental coordination problem:
+
+- **AI companies aren't solving this**: Current approaches assume AI can handle meaning autonomously
+- **Semantic drift is inevitable**: Without explicit coordination, human-AI collaboration degrades
+- **This enables actual symbiosis**: Not better AI use, but a new functional unit neither can achieve alone
+- **Strategic importance**: First systematic approach to the human-AI coordination problem using verified epistemology
+
+The protocols work because they encode the same verification architecture used in Dzogchen practice: **ground is recognized, not fabricated**.
 
 ## Lineage & Authorization
 
